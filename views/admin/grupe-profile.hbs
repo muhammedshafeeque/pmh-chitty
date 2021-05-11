@@ -1,0 +1,39 @@
+<section>
+    <div class="container mt-5">
+        <div style="padding-right: 10%;" class="float-end">
+            <a href="/admin/add-memberto-grup/{{grup._id}}" class="btn btn-primary">Edit Grupe</a>
+        </div>
+        <div class="container mt-5">
+
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Mobile Number</th>
+                        <th scope="col">Monthly Payment</th>
+                        <th scope="col">Share</th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each grupmembers}}
+                    <tr>
+
+                        <td>{{this.members.fname}}</td>
+                        <td>{{this.members.Lname}}</td>
+                        <td>{{this.members.Mobile}}</td>
+                        <td>{{this.members.payment}}</td>
+                        <td style="color:darkred;">{{this.members.persent}}%</td>
+                        
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</section>

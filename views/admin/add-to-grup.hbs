@@ -1,0 +1,33 @@
+<section>
+    <div class="container mt-5">
+        <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Grupe Name</th>
+                                            <th scope="col">Awailable Amount</th>
+                                            <th scope="col">Maximum Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each grups}}
+                                        <tr>
+                                            
+                                            <td>{{this.fname}}</td>
+                                            <td>{{this.totalamount}}</td>
+                                            <td>{{this.maxamount}}</td>
+                                            
+
+                                            <td>
+                                        <a href="/admin/add-memberto-grup/{{this._id}}" class="btn btn-primary">Add To this</a></td>
+                                                
+                                            
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+
+    </div>
+</section>
+<script>
+    
+</script>

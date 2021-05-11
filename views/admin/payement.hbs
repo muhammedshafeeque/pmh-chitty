@@ -1,0 +1,36 @@
+<section>
+    <div class="container mt-5">
+        <div class="float-end">
+            <a href="/admin/cashpayment" class="btn btn-success">Add payement Entry</a>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="mt-5">
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Name</th>
+      <th scope="col">Methord</th>
+       <th scope="col">Amount</th>
+      <th scope="col">Grupe</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each payements}}
+    <tr>
+      <th scope="row">{{this.date}}</th>
+      <td>{{this.membername}}</td>
+      <td>{{this.methord}}</td>
+      <td>{{this.grup}}</td>
+      <td><p style="color: red;">{{this.amount}}</p></td>
+      
+      
+    </tr>
+    {{/each}}
+  
+  </tbody>
+</table>
+        </div>
+    </div>
+</section>

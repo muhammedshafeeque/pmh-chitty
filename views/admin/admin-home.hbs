@@ -1,0 +1,20 @@
+<section>
+  <div class=" row container mt-5">
+
+      {{#each grups}}
+
+    <div class="card" style="width: 18rem; margin: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">Grupe:{{this.fname}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Monthly Amount : {{this.maxamount}}</h6>
+        
+        <h6>Total Payable Amount:  <span style="color: red;">{{../totalpayable}}</span> </h6> 
+        <h6>Status: <span style="color: green;">{{this.status}}</span> </h6>
+
+        <a href="/admin/grups/{{this._id}}" class="btn btn-primary">Show mor</a>
+      </div>
+    </div>
+    {{/each}}
+
+  </div>
+</section>

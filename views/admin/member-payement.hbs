@@ -1,0 +1,80 @@
+
+    <section>
+
+        <div class="container mt-5">
+            
+                <div class="row">
+                    <div class="col-sm ">
+                        <div style="margin: 10px;" class="container">
+
+                            <div>
+                                <h5 style="text-align: center;">Member Details</h5><br>
+                                <br>
+                                <p>Name:- {{member.fname}} {{member.Lname}}</p>
+                                <p>Grupe:- {{member.grup}}</p>
+                                <p>Mobile No:- {{member.Mobile}}</p>
+                                <p>Monthly Payement:{{member.payment}}</p>
+                                <p style="color: red;">Total Payement: {{member.payable}}</p>
+                                <p style="color:green;">Total Payed:{{member.paid}}</p>
+                                <p>Last payement date:</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm">
+                        <div class="container mt-5">
+                            <div style="width:auto;height:auto; margin: 10px;">
+                                <form  action="/admin/member-pay" method="POST">
+
+
+                                    <div class="row col-auto">
+
+                                        <input type="number" name="amount" class="form-control" id="inputPassword2"
+                                            placeholder="{{member.payment}}" value="{{member.payment}}">
+                                    </div>
+                                    <input type="text" name="member" value="{{member._id}}" hidden>
+                                    <input type="text" name="grup" value="{{member.grup}}" hidden>
+                                    <input type="text" name="membername" value="{{member.fname}}  {{member.Lname}}" hidden>
+                                    <input type="text" name="grupId" value="{{member.grupId}}" hidden>
+                                    <br>
+                                    <div class="row col-auto">
+                                        <button type="submit" class="btn btn-primary mb-3">Pay</button>
+                                    </div>
+                                </form>
+                                <div class="mt-5">
+                                    <h5 style="text-align: center;">Payment History</h5>
+                                </div>
+                                <div class="mt-5">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Methord</th>
+                                                <th scope="col">Amount</th>
+                                                
+                                        </thead>
+                                        <tbody>
+                                             {{#each history}}
+                                            <tr>
+                                                <th scope="row">{{this.date}}</th>
+                                                <td>{{this.methord}}</td>
+                                                <td>{{this.amount}}</td>
+                                            </tr>
+                                           {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+        
+
+        </div>
+
+    </section>
+
