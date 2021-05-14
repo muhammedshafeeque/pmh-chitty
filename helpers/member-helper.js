@@ -196,7 +196,6 @@ module.exports = {
   },
   addPayment: (data) => {
     data.amount = parseInt(data.amount)
-    data.methord = 'CASH'
     data.date = new Date()
     return new Promise(async (resolve, reject) => {
       await db.get().collection(collection.PAYEMENT_COLLECTION).insertOne(data)
@@ -256,5 +255,37 @@ module.exports = {
       members= await  db.get().collection(collection.MEMBER_COLLECTION).find({payementstatus:'pending'}).toArray()
       resolve(members)
     })
+  },
+  memeberCAnGift:(memberId)=>{
+    return new Promise(async(resolve,reject)=>{
+      member=await db.get().collection(collection.MEMBER_COLLECTION).findOne({_id:ObjectId(memberId)})
+      resolve(member)
+    })
+  },
+  changeGiftStatus:(data)=>{
+    return new Promise(async(resolve,reject)=>{
+      await db.get().collection(collection.MEMBER_COLLECTION).updateOne({_id:ObjectId(data.member)},
+        {
+          $set:{
+            payementstatus:'Success'
+          }
+        })
+      
+     resolve() 
+    })
+  },
+  memberSerch:(data)=>{
+    return new Promise(async(resolve,reject)=>{
+      member=await db.get().collection(collection.MEMBER_COLLECTION).findOne({Mobile:data.phone})
+      if(member){
+        resolve(member)
+      }else{
+        member=0
+        
+        resolve(member)
+      }
+      
+    })
+   
   }
 }

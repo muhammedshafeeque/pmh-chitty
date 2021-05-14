@@ -2,13 +2,14 @@
     <section>
 
         <div class="container mt-5">
+            <h2 style="text-align: center;">{{member.fname}}  {{member.Lname}}</h2><br>
             
                 <div class="row">
                     <div class="col-sm ">
                         <div style="margin: 10px;" class="container">
 
                             <div>
-                                <h5 style="text-align: center;">Member Details</h5><br>
+                                
                                 
                                 <br>
                                 <p>Name:- {{member.fname}} {{member.Lname}}</p>
@@ -31,33 +32,7 @@
                     <div class="col-sm">
                         <div class="container mt-5">
                             <div style="width:auto;height:auto; margin: 10px;">
-                                {{#if gift}}
-                                <form  action="/admin/member-pay-gift" method="POST">
-                                {{else}}
-                                <form  action="/admin/member-pay" method="POST">
-                                {{/if}}
-                                    {{#if gift}}
-                                    <div class="row col-auto">
-                                        <input type="number" name="amount" class="form-control" id="inputPassword2"
-                                            placeholder="{{member.payment}}" value="{{member.payment}}">
-                                    </div>
-                                    {{else}}
-                                    <div class="row col-auto">
-                                        <input type="number" name="amount" class="form-control" id="inputPassword2"
-                                            placeholder="{{member.payment}}" value="{{member.payment}}">
-                                    </div>
-                                    
-                                    {{/if}}
-                                   
-                                    <input type="text" name="member" value="{{member._id}}" hidden>
-                                    <input type="text" name="grup" value="{{member.grup}}" hidden>
-                                    <input type="text" name="membername" value="{{member.fname}}  {{member.Lname}}" hidden>
-                                    <input type="text" name="grupId" value="{{member.grupId}}" hidden>
-                                    <br>
-                                    <div class="row col-auto">
-                                        <button type="submit" class="btn btn-primary mb-3">Pay</button>
-                                    </div>
-                                </form>
+                              
                                 <div class="mt-5">
                                     <h5 style="text-align: center;">Payment History</h5>
                                 </div>

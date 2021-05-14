@@ -5,7 +5,7 @@
                 style="border-style: solid;border-color: blue; border-width: medium; width: 30rem; height: 10rem;">
 
                 <div class="mt-5">
-
+                    
                     <form action="/serch" method="POST">
 
                         <div class="form-group">
@@ -19,8 +19,9 @@
                         <div class="mr-auto  d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary">Log In</button>
                         </div>
-
-
+                        {{#if err}}
+                        <p style="color: red;">The user not available.....</p>
+                        {{/if}}
                     </form>
                 </div>
             </div>

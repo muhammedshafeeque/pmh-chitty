@@ -5,6 +5,7 @@ const { response } = require('express')
 const { CONSTAND_COLLECTION } = require('../config/collection')
 module.exports = {
     getUserHistory: (memberId) => {
+        
         console.log(memberId)
         return new Promise(async (resolve, reject) => {
             history = await db.get().collection(collection.PAYEMENT_COLLECTION).find({ member: memberId }).toArray()
@@ -76,7 +77,12 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             let payable= await db.get().collection(collection.CONSTAND_COLLECTION).findOne({name:'grup'})
             console.log(payable)
-            resolve(payable.total)
+            if(payable){
+                resolve(payable.total)
+            }else{
+                resolve()
+            }
+            
         })
     },
     balance:(data)=>{
@@ -96,6 +102,12 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             await db.get().collection(collection)
             console.log(data)
+            resolve()
+        })
+    },
+    giftPayement:(data)=>{
+        return new Promise(async(resolve,reject)=>{
+            await db.get().collection(collection.PAYEMENT_COLLECTION).insertOne(data)
             resolve()
         })
     }

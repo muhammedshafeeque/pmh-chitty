@@ -121,8 +121,11 @@ router.get('/makepayment/:id', async (req, res) => {
   res.render('admin/member-payement', { admin: true, member, history })
 })
 router.post('/member-pay', async (req, res) => {
-  await memberHelper.addPayment(req.body)
-  await paYmentHelper.balance(req.body)
+  data=req.body
+  data.methord = 'CASH'
+  data.type='payement'
+  await memberHelper.addPayment(data)
+  await paYmentHelper.balance(data)
   //await payementHelper.paymentToGrupe(req.body)
 
   res.redirect('/admin/payement')
@@ -143,5 +146,21 @@ router.get('/pay-gift-amount',async(req,res)=>{
   members= await memberHelper.giftPendingPayemnt()
   res.render('admin/gift-payment',{admin:true,members})
 })
+router.get('/give-gift-payement/:id',async(req,res)=>{
+  
+ member= await meMberHelper.memeberCAnGift(req.params.id)
+ history = await paYmentHelper.getUserHistory(req.params.id)
+ res.render('admin/member-payement', { admin: true, member, history,gift:true })
+ 
+})
+router.post('/member-pay-gift',async(req,res)=>{
+  data=req.body
+  data.methord='CASH'
+  data.type='gift'
+  data.date=new Date()
 
+  await memberHelper.changeGiftStatus(data)
+  await paYmentHelper.giftPayement(data)
+  res.redirect('/admin')
+})
 module.exports = router;
